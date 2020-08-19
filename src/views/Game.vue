@@ -149,8 +149,9 @@
           console.log("response.data:", response.data);
           this.gameInfo = {
             ...this.gameInfo, 
+            lives: response.data.lives,
             gold: response.data.gold,
-            turn: response.data.turn
+            turn: response.data.turn,
           }
         this.getShopItems();
         } catch (error) {
