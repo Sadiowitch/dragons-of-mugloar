@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss">
     .dashboard {
-        border: solid 1px green;
+        margin: 0;
         display: flex;
         list-style: none;
         justify-content: center;

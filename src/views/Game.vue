@@ -10,13 +10,13 @@
         <li 
           v-for="message in messages" 
           :key="message.adId" 
-          @click="solveTask(message.adId)"
           class="game__list--item">
           <h4>{{ message.probability }}</h4>
           <p>{{ message.message }}</p>
           <span>Expires in: {{ message.expiresIn }} 🕑</span>
           <span>Reward: {{ message.reward }} 💰</span>
-          </li>
+          <button @click="solveTask(message.adId)">Solve</button>
+        </li>
       </ul>
       
       <div class="game__shop"> 
@@ -36,39 +36,97 @@
 </template>
 
 <style lang="scss">
+
   .game {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+   
+    background: url("../assets/board.jpg") no-repeat center;
+
+    &__dashboard {
+      background: linear-gradient(rgba(85, 60, 50, 0.842), rgb(73, 53, 38));
+        color: white;
+        border: 2px solid white;
+        font-weight: 600;
+        padding: 0.25rem;
+    }
 
     
     &__area {
       display: flex;
-      
+      margin: 0 auto;
     }
 
     &__list {
-      width: 80%;
+      width: fit-content;
       display: flex;
       list-style: none;
-      border: solid 1px orange;
       justify-content: space-evenly;
       flex-wrap: wrap;
-      align-items: center;
       padding: 0;
+      margin: 0;
+      
 
     &--item {
       width: 14rem;
       height: 18rem;
-      color: blue;
-      background-color: lightgreen;
-      border: 1px solid red;
-      cursor: pointer;
-    }
+      color: rgb(49, 49, 49);
+      background: url("../assets/paper.jpg") no-repeat;
+      margin: 0.5em 0 0.5em 0;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      transition: 0.2s box-shadow;
+
+      h4 {
+          font-family: 'MedievalSharp', cursive;
+          color: rgb(201, 34, 34);
+          margin: 0;
+      }
+
+      button {
+        border: none;
+        background: linear-gradient(rgba(85, 60, 50, 0.842), rgb(73, 53, 38));
+        color: lightgray;
+        border: 2px solid lightgray;
+        text-shadow: 1px 1px 5px rgb(105, 105, 105);
+        font-weight: 600;
+        padding: 0.25rem;
+        box-shadow: 1px 1px 15px rgb(160, 160, 160);
+        font-size: 1.5rem;
+        font-family: 'MedievalSharp', cursive;
+        width: 10rem;
+        transition: 0.2s all;
+      }
     }
 
+    &--item:hover {
+      box-shadow: 0px 0px 5px 2px rgb(255, 255, 255);
+
+      button {
+        cursor: pointer;
+        color: white;
+        border: 2px solid white;
+      }
+    }
+  }
+    
     &__shop {
-      border: solid 1px red;
-          width: 30rem;
+      width: 20rem;
+      text-align: left;
+      background: linear-gradient(rgba(85, 60, 50, 0.842), rgb(73, 53, 38));
+      color: lightgray;
+      border: 2px solid lightgray;
+      box-shadow: 1px 1px 15px rgb(160, 160, 160);
+      padding: 0.5rem;
+      
+      ul, p {
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 </style>
@@ -139,7 +197,7 @@
           const response = await axios.get(`https://dragonsofmugloar.com/api/v2/${this.gameInfo.gameId}/shop`);
           this.shopList = response.data;
         } catch (error) {
-          console.log("error.message:", error.message)
+          console.log("error.message:", error.message);
         }
       },
 
