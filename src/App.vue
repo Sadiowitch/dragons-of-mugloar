@@ -40,23 +40,23 @@ li {
 
 .start-button {
   border: none;
-  border-radius: 30px;
-  background: linear-gradient(rgb(255, 235, 139), rgb(201, 34, 34));
-  color: rgb(201, 34, 34);
-  text-shadow: 1px 1px 5px rgb(255, 235, 139);
+  background: linear-gradient(rgb(85, 60, 50), rgb(73, 53, 38));
+  color: lightgray;
+  border: 2px solid lightgray;
+  text-shadow: 1px 1px 5px rgb(105, 105, 105);
   font-weight: 600;
-  padding: 0.5rem;
-  box-shadow: 1px 1px 15px rgba(54, 39, 39, 0.74);
+  padding: 0.25rem;
+  box-shadow: 1px 1px 15px rgb(160, 160, 160);
   font-size: 1.5rem;
   font-family: 'MedievalSharp', cursive;
-  width: 13rem;
+  width: 10rem;
   transition: 0.2s all;
 }
 
 .start-button:hover {
   cursor: pointer;
-  box-shadow: 1px 1px 50px rgba(255, 0, 0, 0.411);
-  color:rgb(255, 0, 0);
+  color: white;
+  border: 2px solid white;
 }
 
 .logo {
