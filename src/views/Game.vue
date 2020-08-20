@@ -210,10 +210,12 @@
             lives: response.data.lives,
             gold: response.data.gold,
             turn: response.data.turn,
+            level: response.data.level
           }
-        this.getShopItems();
+          this.getShopItems();
+          this.getTasks();
         } catch (error) {
-          console.log("getGameInfo error.message:", error.message);
+          console.log("getShopItems error.message:", error.message);
         }
       }
 
