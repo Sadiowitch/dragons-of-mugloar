@@ -14,7 +14,7 @@
           <h4>{{ message.probability }}</h4>
           <p>{{ message.message }}</p>
           <span>Expires in: {{ message.expiresIn }} 🕑</span>
-          <span>Reward: {{ message.reward }} 💰</span>
+          <span>Reward: {{ message.reward }} 📀</span>
           <button @click="solveTask(message.adId)">Solve</button>
         </li>
       </ul>
@@ -46,7 +46,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-   
     background: url("../assets/board.jpg") no-repeat center;
 
     &__dashboard {

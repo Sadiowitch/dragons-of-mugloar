@@ -1,9 +1,9 @@
 <template>
    <ul class="dashboard">
-    <li class="dashboard__item">HP ❤: {{ gameStats.lives }}</li>
-    <li class="dashboard__item">Gold 💰: {{ gameStats.gold }}</li>
-    <li class="dashboard__item">Score ⭐: {{ gameStats.score }}</li>
-    <li class="dashboard__item">Turns: {{ gameStats.turn }}</li>
+    <li class="dashboard__item">💖 {{ gameStats.lives }} HP</li>
+    <li class="dashboard__item">📀 {{ gameStats.gold }} Gold</li>
+    <li class="dashboard__item">⭐ {{ gameStats.score }} Points</li>
+    <li class="dashboard__item">🌪 {{ gameStats.turn }} Turns</li>
     </ul>
 </template>
 
