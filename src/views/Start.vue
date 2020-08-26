@@ -1,5 +1,7 @@
 <template>
-  <router-link to="/Game" tag="button" class="start-button">START GAME</router-link>
+  <transition name="fade" appear>
+      <router-link to="/Game" tag="button" class="start-button">START GAME</router-link>
+  </transition>
 </template>
 
 <style lang="scss">
@@ -14,6 +16,6 @@
 
 <script>
 export default {
-  name: "Start",
+  name: "Start"
 };
 </script>

@@ -6,34 +6,32 @@
     <gameStats :gameStats="gameInfo" />
     </div>
 
-    <div class="game__area">
-      <ul v-if="gameInfo.lives" class="game__list">
+  <div class="game__area">
+    <transition-group name="list" tag="ul" v-if="gameInfo.lives" class="game__list">
+      <li
+        v-for="message in messages"
+        :key="message.adId"
+        class="game__list--item">
+        <h4>{{ message.probability }}</h4>
+        <p>{{ message.message }}</p>
+        <span>Expires in: {{ message.expiresIn }} 🕑</span>
+        <span>Reward: {{ message.reward }} 📀</span>
+        <button @click="!solvingTask && solveTask(message.adId)">Solve</button>
+      </li>
+    </transition-group>
+    <div class="game__shop">
+      <ul>
+        <h2>Marketplace</h2>
         <li
-          v-for="message in messages"
-          :key="message.adId"
-          class="game__list--item">
-          <h4>{{ message.probability }}</h4>
-          <p>{{ message.message }}</p>
-          <span>Expires in: {{ message.expiresIn }} 🕑</span>
-          <span>Reward: {{ message.reward }} 📀</span>
-          <button @click="!solvingTask && solveTask(message.adId)">Solve</button>
+          v-for="shopItem in shopList"
+          :key="shopItem.id"
+          class="game__shop--li">
+          <p>{{ shopItem.name }}</p>
+          <button @click="buyItem(shopItem.id)">💲{{ shopItem.cost }}</button>
         </li>
       </ul>
-
-      <div class="game__shop">
-        <ul>
-          <h2>Marketplace</h2>
-          <li
-            v-for="shopItem in shopList"
-            :key="shopItem.id"
-            class="game__shop--li">
-            <p>{{ shopItem.name }}</p>
-            <button @click="buyItem(shopItem.id)">💲{{ shopItem.cost }}</button>
-          </li>
-        </ul>
-      </div>
     </div>
-
+  </div>
   </div>
 </template>
 
@@ -99,7 +97,7 @@
       width: fit-content;
       display: flex;
       list-style: none;
-      justify-content: space-evenly;
+      justify-content: flex-start;
       align-content: space-evenly;
       flex-wrap: wrap;
       padding: 0;
@@ -208,6 +206,13 @@
     color: white;
     border: 2px solid white;
   }
+}
+
+.list-enter-active, .list-leave-active {
+  transition: opacity 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 </style>

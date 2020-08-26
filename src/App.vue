@@ -3,7 +3,9 @@
     <div id="nav">
       <router-link to="/"><img alt="DoM logo" src="./assets/logo.png" class="logo" /></router-link>
     </div>
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -14,6 +16,15 @@
 
 ::selection {
   background-color: rgba(255, 0, 0, 0.100);
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  opacity: 1;
 }
 
 body {
